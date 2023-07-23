@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+  box-sizing: border-box;
+}
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --order: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+
+@media (min-width: 360px) {
+  .fade-in {
+    opacity: 0;
+    animation: fade 750ms calc(200ms + var(--order) * 650ms) forwards ease-out;
   }
-}
+  .fade-down {
+    opacity: 0;
+    animation: fadeDown 1000ms 200ms forwards ease-out;
+  }
+  
+  .test {
+  }
+  @keyframes fade {
+    0% {
+      transform: translateX(200px);
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @keyframes fadeDown {
+    0%{transform: translateY(-15px);}
+    100%{
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
